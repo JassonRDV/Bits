@@ -27,6 +27,7 @@ public class Collectable : MonoBehaviour
     private IEnumerator MoveToCollect()
     {
         var player = FindObjectOfType<Player>();
+        
         float lerpValue = 0;
 
         _onStartMove.Invoke();
@@ -38,7 +39,6 @@ public class Collectable : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         _onCollect.Invoke();
-        player.Anim.SetTrigger("Collect");
 
         yield return new WaitForSeconds(1);
         _onSpawn.Invoke();
